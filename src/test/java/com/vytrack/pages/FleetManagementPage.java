@@ -15,6 +15,10 @@ public class FleetManagementPage {
     @FindBy (xpath = "(//span[@class='title title-level-1'])[1]")
     public WebElement fleetModuleBtn;
 
+    @FindBy (xpath = "//span[.='Vehicles']")
+    public WebElement vehiclesBtn;
 
+    @FindBy (xpath = "//h1[.='Cars']")
+    public WebElement carsHeader;
 
 }

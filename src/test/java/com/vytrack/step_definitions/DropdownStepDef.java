@@ -6,6 +6,7 @@ import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
 
 public class DropdownStepDef {
@@ -27,10 +28,10 @@ public class DropdownStepDef {
     @When("the user clicks on Vehicles subcategory")
     public void the_user_clicks_on_vehicles_subcategory() {
 
+        fleetManagementPage.vehiclesBtn.click();
     }
     @Then("the user should see the Vehicles page with Cars header")
     public void the_user_should_see_the_vehicles_page_with_cars_header() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertEquals("Cars", fleetManagementPage.carsHeader.getText());
     }
 }

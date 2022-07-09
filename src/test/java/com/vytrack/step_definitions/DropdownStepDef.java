@@ -2,13 +2,17 @@ package com.vytrack.step_definitions;
 
 import com.vytrack.pages.FleetManagementPage;
 import com.vytrack.pages.VytrackLoginPage;
+import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DropdownStepDef {
 
@@ -20,6 +24,8 @@ public class DropdownStepDef {
     public void the_user_is_logged_in_and_on_fleet_management_page() {
         Driver.getDriver().get(ConfigurationReader.getProperty("vytrack.login.url"));
         vytrackLoginPage.login("user48", "UserUser123");
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+        wait.until(ExpectedConditions.titleIs("Dashboard"));
     }
     @When("the user clicks on Fleet module")
     public void the_user_clicks_on_fleet_module() {

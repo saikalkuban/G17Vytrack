@@ -26,8 +26,8 @@ public class VytrackLoginPage {
 
 
     public void login(String username, String password){
-        inputUsername.sendKeys(ConfigurationReader.getProperty("truck.driver1.username"));
-        inputPassword.sendKeys(ConfigurationReader.getProperty("all.users.password"));
+        inputUsername.sendKeys(username);
+        inputPassword.sendKeys(password);
         loginBtn.click();
     }
 }

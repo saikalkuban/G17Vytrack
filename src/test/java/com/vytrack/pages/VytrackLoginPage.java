@@ -18,7 +18,7 @@ public class VytrackLoginPage {
     @FindBy (id = "prependedInput2")
     public WebElement inputPassword;
 
-    @FindBy (xpath = "(//a[.='Fleet Management'])[2]")
+    @FindBy (xpath = "//button[@id='_submit']")
     public WebElement loginBtn;
 
     @FindBy (xpath = "(//a[.='Fleet Management'])[2]")

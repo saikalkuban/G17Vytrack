@@ -10,6 +10,10 @@ Feature: User should be able to click Export Grid dropdown
     And the user clicks the login button
     Then the user should see Fleet Management page
 
+  Scenario:
+    When user enters username "user48", password "UserUser123" and login
+
+
 
 
 

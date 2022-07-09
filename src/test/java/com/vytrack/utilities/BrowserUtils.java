@@ -57,7 +57,7 @@ public class BrowserUtils {
 
     public static void waitForInvisibilityOf(WebElement element){
 
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),15);
         wait.until(ExpectedConditions.invisibilityOf(element));
 
     }

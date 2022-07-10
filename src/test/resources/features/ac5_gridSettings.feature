@@ -1,3 +1,4 @@
+@gridSettings
 Feature: User should be able to click
   Grid Settings button
 
@@ -20,7 +21,7 @@ Feature: User should be able to click
     Then the user should see the Vehicles page with Cars header
 
 
-  @gridSettings
+
   Scenario: Truck Driver clicks on Grid Settings button
     Given the user is on the Vehicles page with Cars header
     When the user clicks on Grid Settings button

@@ -25,10 +25,10 @@ public class Grid_SettingsStepDef {
 
     @Given("the user is on the Vehicles page with Cars header")
     public void the_user_is_on_the_vehicles_page_with_cars_header() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("vytrack.login.url"));
-        vytrackLoginPage.login("user48", "UserUser123");
-        Select fleet = new Select(gridSettingsPage.fleet);
-        fleet.selectByIndex(1);
+    //    Driver.getDriver().get(ConfigurationReader.getProperty("vytrack.login.url"));
+    //    vytrackLoginPage.login("user48", "UserUser123");
+    //    Select fleet = new Select(gridSettingsPage.fleet);
+     //   fleet.selectByIndex(1);
 
         Assert.assertEquals("Cars", fleetManagementPage.carsHeader.getText());
     }

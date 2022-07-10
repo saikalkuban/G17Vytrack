@@ -11,6 +11,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Grid_SettingsStepDef {
 
@@ -19,6 +20,8 @@ public class Grid_SettingsStepDef {
     FleetManagementPage fleetManagementPage = new FleetManagementPage();
 
     GridSettingsPage gridSettingsPage=new GridSettingsPage();
+
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 
     @Given("the user is on the Vehicles page with Cars header")
     public void the_user_is_on_the_vehicles_page_with_cars_header() {

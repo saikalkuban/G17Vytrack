@@ -16,5 +16,11 @@ public GridSettingsPage(){
 @FindBy(xpath = "//div[.='Grid Settings']")
     public WebElement gridSettingsTitle;
 
+@FindBy(xpath = "//span[@class='title title-level-1']")
+    public WebElement fleet;
+
+@FindBy(xpath = "(//span[@class='title title-level-2'])[1]")
+    public WebElement vehicle;
+
 
 }

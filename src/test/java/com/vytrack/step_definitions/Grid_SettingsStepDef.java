@@ -3,12 +3,14 @@ package com.vytrack.step_definitions;
 import com.vytrack.pages.FleetManagementPage;
 import com.vytrack.pages.GridSettingsPage;
 import com.vytrack.pages.VytrackLoginPage;
+import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 public class Grid_SettingsStepDef {
 
@@ -18,20 +20,28 @@ public class Grid_SettingsStepDef {
 
     GridSettingsPage gridSettingsPage=new GridSettingsPage();
 
-    @Given("the user is on the Vehicles page")
-    public void the_user_is_on_the_vehicles_page() {
+    @Given("the user is on the Vehicles page with Cars header")
+    public void the_user_is_on_the_vehicles_page_with_cars_header() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("vytrack.login.url"));
+        vytrackLoginPage.login("user48", "UserUser123");
+        Select fleet = new Select(gridSettingsPage.fleet);
+        fleet.selectByIndex(1);
+
         Assert.assertEquals("Cars", fleetManagementPage.carsHeader.getText());
     }
+
     @When("the user clicks on Grid Settings button")
-    public void the_user_clicks_on_grid_settings_button() {
-        Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(gridSettingsPage.gridSettingsBtn).perform();
+    public void theUserClicksOnGridSettingsButton() {
+        gridSettingsPage.gridSettingsBtn.click();
     }
 
 
+    @Then("the user should see the settings with Grid Settings title")
+    public void the_user_should_see_the_settings_with_grid_settings_title() {
 
-    @Then("the user should see the Grid Settings title")
-    public void theUserShouldSeeTheGridSettingsTitle() {
-        Assert.assertEquals("Grid Settings",gridSettingsPage.gridSettingsTitle.getText());
+
+Assert.assertEquals("Grid Settings",gridSettingsPage.gridSettingsTitle.getText());
     }
+
+
 }

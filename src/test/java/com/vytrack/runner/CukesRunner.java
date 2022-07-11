@@ -15,9 +15,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/vytrack/step_definitions",
         dryRun = true,
-        tags = "@gridSettings"
-        dryRun = false,
-        tags = "@driver"
+        tags = ""
+
 
 
 )

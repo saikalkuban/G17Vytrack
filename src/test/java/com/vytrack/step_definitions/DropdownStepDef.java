@@ -3,15 +3,12 @@ package com.vytrack.step_definitions;
 import com.vytrack.pages.FleetManagementPage;
 import com.vytrack.pages.VehiclesPage;
 import com.vytrack.pages.VytrackLoginPage;
-import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,6 +19,8 @@ public class DropdownStepDef {
 
     FleetManagementPage fleetManagementPage = new FleetManagementPage();
     VehiclesPage vehiclesPage = new VehiclesPage();
+
+
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 
     @Given("the user is logged in and on Fleet Management page")
@@ -63,8 +62,15 @@ public class DropdownStepDef {
         Assert.assertTrue(vehiclesPage.csv.isDisplayed());
     }
 
+    @When("the user should be able to click Grid Setting button")
+    public void theUserShouldBeAbleToClickGridSettingButton() {
+     vehiclesPage.gridSettingsBtn.click();
 
-
+    }
+    @Then("the Grid Settings button should be displayed")
+    public void theGridSettingsButtonShouldBeDisplayed() {
+        Assert.assertTrue(vehiclesPage.gridSettingsBtn.isDisplayed());
+    }
 
 
 }

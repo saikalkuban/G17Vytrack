@@ -16,6 +16,9 @@ import org.junit.runner.RunWith;
         glue = "com/vytrack/step_definitions",
         dryRun = true,
         tags = "@gridSettings"
+        dryRun = false,
+        tags = "@driver"
+
 
 )
 public class CukesRunner {

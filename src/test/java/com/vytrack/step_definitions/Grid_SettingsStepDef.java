@@ -10,6 +10,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -30,6 +31,7 @@ public class Grid_SettingsStepDef {
     public void truck_driver_enter_below_credentials(Map<String,String> credentials) {
         Driver.getDriver().get(ConfigurationReader.getProperty("vytrack.login.url"));
        vytrackLoginPage.login(credentials.get("username"),credentials.get("password"));
+        wait.until(ExpectedConditions.titleIs("Dashboard"));
     }
     @Given("truck driver click on login button")
     public void truck_driver_click_on_login_button() {
@@ -39,11 +41,12 @@ public class Grid_SettingsStepDef {
     public void truck_driver_hover_over_fleet_module() {
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(fleetManagementPage.fleetModuleBtn).perform();
+        fleetManagementPage.vehiclesBtn.click();
     }
     @When("truck driver click on vehicles")
     public void truck_driver_click_on_vehicles() {
 
-        fleetManagementPage.vehiclesBtn.click();
+
     }
     @When("truck driver should see vehicles page")
     public void truck_driver_should_see_vehicles_page() {

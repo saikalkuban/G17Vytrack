@@ -13,6 +13,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Map;
+
 public class Grid_SettingsStepDef {
 
     VytrackLoginPage vytrackLoginPage = new VytrackLoginPage();
@@ -23,28 +25,35 @@ public class Grid_SettingsStepDef {
 
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 
-    @Given("the user is on the Vehicles page with Cars header")
-    public void the_user_is_on_the_vehicles_page_with_cars_header() {
-    //    Driver.getDriver().get(ConfigurationReader.getProperty("vytrack.login.url"));
-    //    vytrackLoginPage.login("user48", "UserUser123");
-    //    Select fleet = new Select(gridSettingsPage.fleet);
-     //   fleet.selectByIndex(1);
 
+    @Given("truck driver enter below credentials")
+    public void truck_driver_enter_below_credentials(Map<String,String> credentials) {
+        Driver.getDriver().get(ConfigurationReader.getProperty("vytrack.login.url"));
+       vytrackLoginPage.login(credentials.get("username"),credentials.get("password"));
+    }
+    @Given("truck driver click on login button")
+    public void truck_driver_click_on_login_button() {
+       vytrackLoginPage.loginBtn.click();
+    }
+    @When("truck driver hover over fleet module")
+    public void truck_driver_hover_over_fleet_module() {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(fleetManagementPage.fleetModuleBtn).perform();
+    }
+    @When("truck driver click on vehicles")
+    public void truck_driver_click_on_vehicles() {
+
+        fleetManagementPage.vehiclesBtn.click();
+    }
+    @When("truck driver should see vehicles page")
+    public void truck_driver_should_see_vehicles_page() {
         Assert.assertEquals("Cars", fleetManagementPage.carsHeader.getText());
     }
-
-    @When("the user clicks on Grid Settings button")
-    public void theUserClicksOnGridSettingsButton() {
+    @Then("truck driver should be able to click Grid Settings Button")
+    public void truck_driver_should_be_able_to_click_grid_settings_button() {
         gridSettingsPage.gridSettingsBtn.click();
     }
 
-
-    @Then("the user should see the settings with Grid Settings title")
-    public void the_user_should_see_the_settings_with_grid_settings_title() {
-
-
-Assert.assertEquals("Grid Settings",gridSettingsPage.gridSettingsTitle.getText());
-    }
-
-
 }
+
+

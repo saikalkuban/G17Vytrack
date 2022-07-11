@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -26,36 +27,34 @@ public class Grid_SettingsStepDef {
 
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 
-
-    @Given("truck driver enter below credentials")
-    public void truck_driver_enter_below_credentials(Map<String,String> credentials) {
+    @Given("the user is on the login page")
+    public void the_user_is_on_the_login_page() {
         Driver.getDriver().get(ConfigurationReader.getProperty("vytrack.login.url"));
-       vytrackLoginPage.login(credentials.get("username"),credentials.get("password"));
-        wait.until(ExpectedConditions.titleIs("Dashboard"));
     }
-    @Given("truck driver click on login button")
-    public void truck_driver_click_on_login_button() {
-       vytrackLoginPage.loginBtn.click();
-    }
-    @When("truck driver hover over fleet module")
-    public void truck_driver_hover_over_fleet_module() {
-        Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(fleetManagementPage.fleetModuleBtn).perform();
-        fleetManagementPage.vehiclesBtn.click();
-    }
-    @When("truck driver click on vehicles")
-    public void truck_driver_click_on_vehicles() {
 
+    @When("the user enters the username {string}")
+    public void the_user_enters_the_username(String username) {
+        vytrackLoginPage.inputUsername.sendKeys(username + Keys.ENTER);
+    }
+    @When("the user enters the password {string}")
+    public void the_user_enters_the_password(String password) {
+        vytrackLoginPage.inputPassword.sendKeys(password + Keys.ENTER);
+    }
+    @When("the user clicks the login button")
+    public void the_user_clicks_the_login_button() {
+        vytrackLoginPage.loginBtn.click();
+    }
+
+    @Then("the user should see Fleet Management page")
+    public void the_user_should_see_fleet_management_page() {
+        Assert.assertEquals("FLEET MANAGEMENT", vytrackLoginPage.fleetManagement.getText());
+    }
+
+    @Then("the user should be able to click Grid Setting button")
+    public void the_user_should_be_able_to_click_grid_setting_button() {
 
     }
-    @When("truck driver should see vehicles page")
-    public void truck_driver_should_see_vehicles_page() {
-        Assert.assertEquals("Cars", fleetManagementPage.carsHeader.getText());
-    }
-    @Then("truck driver should be able to click Grid Settings Button")
-    public void truck_driver_should_be_able_to_click_grid_settings_button() {
-        gridSettingsPage.gridSettingsBtn.click();
-    }
+
 
 }
 

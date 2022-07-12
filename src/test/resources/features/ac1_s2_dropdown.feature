@@ -6,9 +6,6 @@ Feature: User should be able to click Export Grid dropdown
     When the user clicks on Fleet module
     And the user clicks on Vehicles subcategory
 
-
-
-
   Scenario: Truck Driver should land on Vehicles page
     Then the user should see the Vehicles page with Cars header
 

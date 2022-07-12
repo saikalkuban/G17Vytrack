@@ -65,8 +65,10 @@ public class DropdownStepDef {
 
     @Then("the user verifies that Export Grid dropdown is on the left of the page")
     public void the_user_verifies_that_export_grid_dropdown_is_on_the_left_of_the_page() {
-        int getX = vehiclesPage.exportGridBtn.getLocation().getX();
-            Assert.assertEquals(12, getX);
+        int winWidth = Driver.getDriver().manage().window().getSize().getWidth();
+        System.out.println("Screen width: " + winWidth);
+        int xPos = vehiclesPage.exportGridBtn.getLocation().getX();
+        Assert.assertTrue("The button is NOT on the left", xPos <= winWidth/2);
         }
     }
 

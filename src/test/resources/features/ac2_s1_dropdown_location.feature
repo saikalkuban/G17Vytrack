@@ -8,6 +8,6 @@ Feature: Export Grid dropdown is on the left of the page
   Scenario: Truck Driver should land on Vehicles page
     Then the user should see the Vehicles page with Cars header
 
-@wipAzamat
+  @wipAzamat
   Scenario: Truck Driver verifies that the Export Grid dropdown is on the left of the page
     Then the user verifies that Export Grid dropdown is on the left of the page

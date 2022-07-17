@@ -1,5 +1,5 @@
 package com.vytrack.step_definitions;
-
+import org.junit.Assert;
 import com.vytrack.pages.FleetManagementPage;
 import com.vytrack.pages.VehiclesPage;
 import com.vytrack.pages.VytrackLoginPage;
@@ -9,7 +9,7 @@ import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -22,7 +22,9 @@ public class DropdownStepDef {
 
     FleetManagementPage fleetManagementPage = new FleetManagementPage();
     VehiclesPage vehiclesPage = new VehiclesPage();
-    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+
+
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
 
     @Given("the user is logged in and on Fleet Management page")
     public void the_user_is_logged_in_and_on_fleet_management_page() {
@@ -44,6 +46,7 @@ public class DropdownStepDef {
     }
     @Then("the user should see the Vehicles page with Cars header")
     public void the_user_should_see_the_vehicles_page_with_cars_header() {
+        wait.until(ExpectedConditions.visibilityOf(vehiclesPage.cars));
         Assert.assertEquals("Cars", fleetManagementPage.carsHeader.getText());
     }
 
@@ -53,8 +56,8 @@ public class DropdownStepDef {
     }
 
     @When("the user clicks on the Export Grid dropdown")
-    public void the_user_clicks_on_the_export_grid_dropdown() {
-
+    public void the_user_clicks_on_the_export_grid_dropdown() throws InterruptedException {
+        Thread.sleep(5000);
         vehiclesPage.exportGridBtn.click();
 
     }
@@ -64,7 +67,16 @@ public class DropdownStepDef {
     }
 
 
+    @Then("the user should be able to reset the page")
+    public void theUserShouldBeAbleToResetThePage() {
+        wait.until(ExpectedConditions.visibilityOf(vehiclesPage.cars));
+        vehiclesPage.resetBtn.click();
+    }
+
+    @Then("the reset button should be displayed")
+
+    public void the_reset_button_should_be_displayed() {
+        Assert.assertTrue(vehiclesPage.resetBtn.isDisplayed());
 
 
-
-}
+    }}

@@ -19,5 +19,11 @@ public class VehiclesPage {
     @FindBy(css = "a.action.btn.refresh-action.mode-text-only")
     public WebElement refreshBtn;
 
+    @FindBy (xpath = "//h1[.='Cars']")
+    public WebElement cars;
+
+    @FindBy(xpath = "//a[@title='Reset']")
+    public WebElement resetBtn;
+
 
 }

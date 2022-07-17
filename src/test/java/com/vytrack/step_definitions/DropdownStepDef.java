@@ -70,5 +70,6 @@ public class DropdownStepDef {
         int xPos = vehiclesPage.exportGridBtn.getLocation().getX();
         Assert.assertTrue("The button is NOT on the left", xPos <= winWidth/2);
         }
+
     }
 

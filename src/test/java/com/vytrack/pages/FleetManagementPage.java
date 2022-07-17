@@ -12,6 +12,7 @@ public class FleetManagementPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+
     @FindBy (xpath = "(//span[@class='title title-level-1'])[1]")
     public WebElement fleetModuleBtn;
 

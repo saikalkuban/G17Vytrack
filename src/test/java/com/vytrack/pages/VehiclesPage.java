@@ -19,5 +19,8 @@ public class VehiclesPage {
     @FindBy(css = "a.action.btn.refresh-action.mode-text-only")
     public WebElement refreshBtn;
 
+    @FindBy (xpath = "//div[@class='column-manager dropdown']")
+    public WebElement gridSettingsBtn;
+
 
 }

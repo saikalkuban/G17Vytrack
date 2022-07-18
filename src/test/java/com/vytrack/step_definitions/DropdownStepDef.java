@@ -31,17 +31,20 @@ public class DropdownStepDef {
 
         wait.until(ExpectedConditions.titleIs("Dashboard"));
     }
+
     @When("the user clicks on Fleet module")
     public void the_user_clicks_on_fleet_module() {
 
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(fleetManagementPage.fleetModuleBtn).perform();
     }
+
     @When("the user clicks on Vehicles subcategory")
     public void the_user_clicks_on_vehicles_subcategory() {
 
         fleetManagementPage.vehiclesBtn.click();
     }
+
     @Then("the user should see the Vehicles page with Cars header")
     public void the_user_should_see_the_vehicles_page_with_cars_header() {
         Assert.assertEquals("Cars", fleetManagementPage.carsHeader.getText());
@@ -58,6 +61,7 @@ public class DropdownStepDef {
         vehiclesPage.exportGridBtn.click();
 
     }
+
     @Then("the user should see the dropdown options")
     public void the_user_should_see_the_dropdown_options() {
         Assert.assertTrue(vehiclesPage.csv.isDisplayed());
@@ -68,8 +72,17 @@ public class DropdownStepDef {
         int winWidth = Driver.getDriver().manage().window().getSize().getWidth();
         System.out.println("Screen width: " + winWidth);
         int xPos = vehiclesPage.exportGridBtn.getLocation().getX();
-        Assert.assertTrue("The button is NOT on the left", xPos <= winWidth/2);
-        }
-
+        Assert.assertTrue("The button is NOT on the left", xPos <= winWidth / 2);
     }
+
+    @Then("the user verifies that the Grid Settings button is on the right of the page")
+    public void the_user_verifies_that_the_grid_settings_button_is_on_the_right_of_the_page() {
+        int winWidth = Driver.getDriver().manage().window().getSize().getWidth();
+        System.out.println("Screen width: " + winWidth);
+        int xPos = vehiclesPage.gridSettingsBtn.getLocation().getX();
+        Assert.assertTrue("The button is NOT on the right", xPos >= winWidth / 2);
+    }
+}
+
+
 
